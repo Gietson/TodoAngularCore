@@ -1,14 +1,14 @@
 ﻿import { TodosPage } from './app.po';
 
 describe('todos App', () => {
-  let page: TodosPage;
+	let page: TodosPage;
 
-  beforeEach(() => {
-    page = new TodosPage();
-  });
+	beforeEach(() => {
+		page = new TodosPage();
+	});
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Cool todo list');
-  });
+	it('should display welcome message', () => {
+		page.navigateTo();
+		expect(page.getParagraphText()).toEqual('Cool todo list');
+	});
 });

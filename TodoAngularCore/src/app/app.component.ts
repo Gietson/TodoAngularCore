@@ -1,21 +1,56 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http'
+
+import { DataService } from './data.service';
+
+import { Todo } from './todo';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	providers: [DataService],
+	styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
 
-    constructor(private _httpService: Http) { }
+	constructor(private dataService: DataService) { }
 
-    apiValues: string[] = [];
+	newTodo: Todo = new Todo();
 
-    ngOnInit() {
-        this._httpService.get('/api/todo').subscribe(values => {
+
+	errorMessage: string;
+	Todos: Todo[] = [];
+	mode = 'Observable';
+	ngOnInit() {
+		this.getData();
+        /*this._httpService.get('/api/values').subscribe(values => {
             this.apiValues = values.json() as string[];
-        });
-    }
+        });*/
+	}
 
+	getData() {
+		//console.log('jestem tu');
+		this.dataService.getAll()
+			.subscribe(
+			result => this.Todos = result,
+			error => this.errorMessage = <any>error);
+	}
+	removeTodo(todo) {
+		//console.log(todo);
+
+		this.dataService.delete(todo.id)
+			.subscribe(
+			result => this.getData(),
+			error => this.errorMessage = <any>error);
+
+		//this.getData()
+	}
+
+	addTodo() {
+		console.log(this.newTodo);
+		this.dataService.create(this.newTodo).subscribe(
+			result => this.getData(),
+			error => this.errorMessage = <any>error);
+		
+		this.newTodo = new Todo();
+	}
 }

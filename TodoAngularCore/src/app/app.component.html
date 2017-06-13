@@ -1,4 +1,7 @@
 ﻿<h1>Cool todo list</h1>
-<ul *ngFor="let value of apiValues">
-  <li>{{value}}</li>
+
+<input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.message" (keyup.enter)="addTodo()">
+
+<ul *ngFor="let todo of Todos">
+  <li>{{todo.id}} -  {{todo.message}} <button class="button" (click)="removeTodo(todo)">x</button></li>
 </ul>

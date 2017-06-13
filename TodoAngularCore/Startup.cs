@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.IO;
+using TodoAngularCore.Services;
 
 namespace TodoAngularCore
 {
@@ -13,6 +14,9 @@ namespace TodoAngularCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // Add application services.
+            services.AddTransient<ITodoService, TodoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
