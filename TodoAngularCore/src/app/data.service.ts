@@ -39,6 +39,12 @@ export class DataService {
 			.catch(this.handleError);
 	}
 
+	update(todo: Todo) {
+		this.http
+			.put(this.url, JSON.stringify(todo), this.options)
+			.catch(this.handleError);
+	}
+
 	private extractData(res: Response) {
 		console.log(res);
 		let body = res.json();

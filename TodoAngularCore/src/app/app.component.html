@@ -1,7 +1,21 @@
-﻿<h1>Cool todo list!</h1>
+﻿<div class="container">
+    <h1>Cool todo list!</h1>
+    <div class="form-group">
+        <input type="text" class="form-control new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.message" (keyup.enter)="addTodo()">
+    </div>
 
-<input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.message" (keyup.enter)="addTodo()">
+    <div class="form-group">
+        <div class="checkbox">
+            <ul class="todo-list">
+                <li *ngFor="let todo of Todos" [class.completed]="todo.complete">
+                    <div class="view">
+                        <input class="toggle" type="checkbox" [checked]="todo.complete" (click)="updateTodo(todo)">
+                        <label>{{todo.message}}</label>
+                        <button class="destroy" (click)="removeTodo(todo)"></button>
+                    </div>
+                </li>
+            </ul>
 
-<ul *ngFor="let todo of Todos">
-  <li>{{todo.id}} -  {{todo.message}} <button class="button" (click)="removeTodo(todo)">x</button></li>
-</ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    color: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+
+.todo-list li .destroy {
+    bottom: 0;
+    color: #cc9a9a;
+    display: none;
+    font-size: 30px;
+    height: 40px;
+    margin: auto 0 11px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    transition: color 0.2s ease-out 0s;
+    width: 40px;
+}
+
+    .todo-list li .destroy:hover {
+        color: #af5b5e;
+    }
+
+    .todo-list li .destroy::after {
+        content: "×";
+    }
+
+.todo-list li:hover .destroy {
+    display: block;
+}

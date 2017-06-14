@@ -44,12 +44,12 @@ namespace TodoAngularCore.Controllers
             return await _todoService.AddAsync(todo);
         }
 
-        //// PUT api/values/5
-        //[HttpPut("{id}")]
-        //public async Task Put(int id, [FromBody]string value)
-        //{
-        //    await _todoService.UpdateAsync(new Todo(value));
-        //}
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public async Task Put(int id, [FromBody]Todo todo)
+        {
+            await _todoService.UpdateAsync(todo);
+        }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]

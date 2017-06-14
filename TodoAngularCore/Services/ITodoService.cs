@@ -11,7 +11,7 @@ namespace TodoAngularCore.Services
         Task<IEnumerable<Todo>> GetAllAsync();
         Task<Todo> GetAsync(Guid id);
         Task<bool> AddAsync(Todo todo);
-        //Task UpdateAsync(Todo todo);
+        Task UpdateAsync(Todo todo);
         Task<bool> RemoveAsync(Guid id);
     }
 }

@@ -32,12 +32,11 @@ namespace TodoAngularCore.Services
             return _tasks.Remove(user);
         }
 
-        //public async Task UpdateAsync(Todo todo)
-        //{
-        //    Todo t = _tasks.Single(x => x.Id == todo.Id);
-        //    t.Message = todo.Message;
-        //    t.Complete = todo.Complete;
-
-        //}
+        public async Task UpdateAsync(Todo todo)
+        {
+            Todo t = await Task.FromResult(_tasks.SingleOrDefault(x => x.Id == todo.Id));
+            t.Message = todo.Message;
+            t.Complete = todo.Complete;
+        }
     }
 }

@@ -50,7 +50,14 @@ export class AppComponent implements OnInit {
 		this.dataService.create(this.newTodo).subscribe(
 			result => this.getData(),
 			error => this.errorMessage = <any>error);
-		
+
 		this.newTodo = new Todo();
+	}
+
+	updateTodo(todo) {
+		console.log('zmieniam todo = ' + JSON.stringify(todo));
+		this.dataService.update(todo);
+		todo.complete = !todo.complete;
+
 	}
 }
