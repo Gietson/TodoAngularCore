@@ -16,8 +16,8 @@ namespace TodoAngularCore.Services
                         };
 
         public async Task<bool> AddAsync(Todo todo)
-        { 
-              return await Task.FromResult(_tasks.Add(todo));
+        {
+            return await Task.FromResult(_tasks.Add(todo));
         }
 
         public async Task<IEnumerable<Todo>> GetAllAsync()
